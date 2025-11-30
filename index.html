@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Chess Battle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>♟️ LLM Chess Battle</h1>
+        <p class="subtitle">Watch AI models compete in chess</p>
+        
+        <div class="controls">
+            <div class="player-selection">
+                <div class="player-config">
+                    <label for="white-model">White Player:</label>
+                    <select id="white-model">
+                        <option value="">Select Model...</option>
+                        <option value="huggingface:gpt2">HuggingFace GPT-2</option>
+                        <option value="huggingface:distilgpt2">HuggingFace DistilGPT-2</option>
+                        <option value="together:togethercomputer/RedPajama-INCITE-Chat-3B-v1">Together RedPajama 3B</option>
+                        <option value="openrouter:openai/gpt-3.5-turbo">OpenRouter GPT-3.5-Turbo (Free)</option>
+                    </select>
+                </div>
+                
+                <div class="player-config">
+                    <label for="black-model">Black Player:</label>
+                    <select id="black-model">
+                        <option value="">Select Model...</option>
+                        <option value="huggingface:gpt2">HuggingFace GPT-2</option>
+                        <option value="huggingface:distilgpt2">HuggingFace DistilGPT-2</option>
+                        <option value="together:togethercomputer/RedPajama-INCITE-Chat-3B-v1">Together RedPajama 3B</option>
+                        <option value="openrouter:openai/gpt-3.5-turbo">OpenRouter GPT-3.5-Turbo (Free)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="api-keys">
+                <input type="password" id="huggingface-key" placeholder="HuggingFace API Key (optional)">
+                <input type="password" id="together-key" placeholder="Together AI API Key (optional)">
+                <input type="password" id="openrouter-key" placeholder="OpenRouter API Key (optional)">
+            </div>
+            
+            <div class="game-controls">
+                <button id="start-game" class="btn btn-primary">Start Game</button>
+                <button id="reset-game" class="btn btn-secondary">Reset</button>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <div class="status-panel">
+                <div class="status-item">
+                    <span class="label">Turn:</span>
+                    <span id="current-turn">White</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Move:</span>
+                    <span id="move-number">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Status:</span>
+                    <span id="game-status">Ready</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="chessboard"></div>
+
+        <div class="move-history">
+            <h3>Move History</h3>
+            <div id="moves-list"></div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to Play</h3>
+            <ol>
+                <li>Select LLM models for White and Black players</li>
+                <li>Optionally enter API keys (required for some providers)</li>
+                <li>Click "Start Game" and watch the AI battle!</li>
+                <li>Each move has a 3-second delay for observation</li>
+            </ol>
+            <p class="note"><strong>Note:</strong> Some free models may have rate limits. If you don't have API keys, the demo will use a fallback chess engine.</p>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
