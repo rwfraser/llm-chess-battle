@@ -71,15 +71,21 @@ An interactive chess game where different AI language models compete against eac
 llm-chess-battle/
 ├── index.html      # Main HTML structure
 ├── styles.css      # Styling and responsive design
-├── chess.js        # Chess engine and game logic
 ├── app.js          # Application logic and LLM API integration
 └── README.md       # This file
 ```
 
+**External Libraries (loaded via CDN):**
+- chess.js - Complete chess rules engine
+- chessboard.js - Professional chess board visualization
+- jQuery - Required by chessboard.js
+
 ## Technical Details
 
-- **Chess Engine**: Custom lightweight implementation
-- **Move Validation**: Complete legal move generation
+- **Chess Engine**: chess.js library (complete chess rules)
+- **Board Visualization**: chessboard.js library
+- **Move Validation**: Full chess rules including castling, en passant, promotion
+- **Game Detection**: Checkmate, stalemate, draw conditions
 - **LLM Integration**: REST API calls to various providers
 - **Fallback**: Random valid moves when API fails
 - **Rate Limiting**: 3-second minimum delay between moves
@@ -94,10 +100,11 @@ llm-chess-battle/
 ## Future Enhancements
 
 - [ ] Add more LLM providers
-- [ ] Implement complete chess rules (castling, en passant, checkmate detection)
-- [ ] Save game replays
+- [ ] Save game replays (PGN export)
 - [ ] Add ELO rating system for models
 - [ ] Tournament mode with multiple games
+- [ ] Show LLM thinking process/reasoning
+- [ ] Add time controls
 
 ## License
 
