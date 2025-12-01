@@ -6,12 +6,29 @@ let whiteModel = null;
 let blackModel = null;
 let apiKeys = {};
 
-// Initialize the application
-document.addEventListener('DOMContentLoaded', () => {
-    game = new Chess();
-    initializeBoard();
-    setupEventListeners();
-    updateGameInfo();
+// Initialize the application - wait for all libraries to load
+window.addEventListener('load', () => {
+    // Check if libraries loaded
+    if (typeof Chess === 'undefined') {
+        console.error('Chess.js library not loaded');
+        alert('Error: Chess library failed to load. Please refresh the page.');
+        return;
+    }
+    if (typeof Chessboard === 'undefined') {
+        console.error('Chessboard.js library not loaded');
+        alert('Error: Chessboard library failed to load. Please refresh the page.');
+        return;
+    }
+    
+    try {
+        game = new Chess();
+        initializeBoard();
+        setupEventListeners();
+        updateGameInfo();
+    } catch (error) {
+        console.error('Initialization error:', error);
+        alert('Error initializing game: ' + error.message);
+    }
 });
 
 function setupEventListeners() {
