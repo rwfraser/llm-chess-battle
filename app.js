@@ -48,7 +48,7 @@ function initializeBoard() {
 function updateGameInfo() {
     const turn = game.turn() === 'w' ? 'White' : 'Black';
     document.getElementById('current-turn').textContent = turn;
-    document.getElementById('move-number').textContent = game.moveNumber();
+    document.getElementById('move-number').textContent = Math.floor(game.history().length / 2) + 1;
     
     // Update game status
     if (game.isCheckmate()) {
